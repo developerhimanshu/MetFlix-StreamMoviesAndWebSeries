@@ -1,0 +1,33 @@
+*{
+    text-decoration: none;
+    box-sizing: border-box;
+}
+.footer{
+    display: flex;
+    max-width:1000px;
+    flex-direction: column;
+    padding:70px 50px;
+    // align-items: center;
+    margin-top:0px;
+    margin-right:0px;
+    >p{
+        font-size:18px;      
+        color:rgb(90, 89, 89);
+    }
+
+    .row{
+       display:grid;
+       grid-template-columns: auto auto auto;
+       grid-gap: 1rem;
+       a{
+            color:rgb(90, 89, 89);
+            font-size:13px;
+        
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+
+    }
+
+}

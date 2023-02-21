@@ -1,0 +1,160 @@
+
+@media only screen and (max-width:1000px){
+    section{
+        .component{
+            flex-direction: column;
+            margin:50px 0; 
+            height:auto;
+            overflow: hidden;
+
+            &:nth-child(2){
+                flex-direction: column;
+                >img{
+                    width:30%;
+                    height: 50%;
+                }
+            }
+            &:last-child{
+                margin-bottom:0;
+            }
+            .text{
+                width:100%;
+                padding:0 45px;
+            }
+            img{
+                width: 80%;
+            }
+        }
+    }
+ 
+    
+}
+
+@media  (max-width:600px){
+    section{
+    .component{
+        flex-direction: column;
+        h1{
+            font-size: 35px;
+        }
+        h2{
+            font-size:18px;
+        }
+    }
+}
+}
+
+@media only screen and (max-width:800px) {
+    .footer{
+        display: flex;
+        max-width:1000px;
+        flex-direction: column;
+        padding:70px 50px;
+        margin-top:0px;
+        margin-right:0px;
+        >p{
+            font-size:18px;
+            margin-bottom:25px;
+            color:rgb(90, 89, 89);
+        }    
+        .row{
+           display:grid;
+           grid-template-columns: auto auto;
+        }
+    }
+   
+    .accordian{
+        h1{
+            font-size:2.5rem;
+        }
+        .accord{
+            .accordian-button{
+                width:100vw;
+                >p{
+                    font-size:1.2rem;
+                }
+                .plus{
+                    font-size:1.6rem;
+                    background-color: #333333;
+                    width:25px;
+                    height:25px;
+                }
+            }
+            .accordian-body{
+                width:100vw;            
+                font-size:1.2rem;
+    
+            }
+        }
+
+        .input-submit{
+            gap:20px;
+            flex-direction: column;
+
+            >input{
+                width:70vw;
+            }
+            >button{
+                width:30vw;
+            }
+        }
+    }
+
+    .navbar{
+        .navi-body{
+
+            h1{
+                font-size:35px;
+            }
+            .input-submit{
+                gap:20px;
+                flex-direction: column;
+        
+                >input{
+                    width:70vw;
+                }
+                >button{
+                    width:30vw;
+                    p{
+                        font-size:1.4rem;
+                    }
+                }
+            }
+        }
+    } 
+}
+
+
+@media (max-width:400px){
+    .navbar{
+        .navi{
+            padding:1rem 1rem;
+        }
+
+        .navi-body{
+
+            h2{
+                font-size:1.2rem;
+            }
+            p{
+                font-size:1rem;
+            }
+            .input-submit{
+                gap:20px;
+                flex-direction: column;
+
+                >input{
+                    width:70vw;
+                }
+                >button{
+                    width:30vw;
+                    >p{
+                        font-size:1rem;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
