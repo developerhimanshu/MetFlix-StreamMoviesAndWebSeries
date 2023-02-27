@@ -1,21 +1,19 @@
 import React from 'react';
 import JumboData from '../fixtures/jumbo.json'
-import {Jumbotron} from '../components';
-
 
 export function JumbotronContainer(){
     return(      
-        <Jumbotron.Container  >
+        <section >
             {JumboData.map((item)=>(
-                <Jumbotron key = {item.id}>
-                    <Jumbotron.TextInner>
-                        <Jumbotron.Title>{item.title}</Jumbotron.Title>
-                        <Jumbotron.SubTitle>{item.subTitle}</Jumbotron.SubTitle>
-                    </Jumbotron.TextInner>
-                    <Jumbotron.Image src={item.image} alt = {item.alt} />
-                 </ Jumbotron>   
+                <div key = {item.id} className="component">
+                    <div className='text'>
+                        <h1>{item.title}</h1>
+                        <h2>{item.subTitle}</h2>
+                    </div>
+                    <img src={item.image} alt = {item.alt} />
+                 </ div>   
             )) }
            
-        </Jumbotron.Container>
+        </section>
     )
 }
