@@ -1,5 +1,7 @@
 
 .accordian{
+    color:white;
+    background-color: black;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,6 +30,7 @@
             padding:20px;
             width:800px;
             background-color: #333333;
+            color:white;
             display: flex;
             gap:10px;
             margin:5px;
@@ -92,7 +95,9 @@
             padding:15px;
             margin: 0;
             height:60px;
-            font-size:1.2rem;
+            font-size:1.5rem;
+            font-weight:500;
+            color:white;
             display: flex;
             align-items: center;
             border:none;

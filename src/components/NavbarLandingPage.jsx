@@ -1,12 +1,16 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {AiOutlineRight} from 'react-icons/ai'
+import { signInContext } from '../pages/Home'
+
+
 
 const Navbar = () => {
+  const {signIn, setSignIn} = useContext(signInContext)
   return (
     <div className='navbar'>
         <div className = 'navi'>
             <img src="/images/misc/logo.svg" alt="" />
-            <button>Sign In</button>
+            <button onClick={()=>setSignIn(!signIn)}>Sign In</button>
         </div>
 
         <div className='navi-body'>
@@ -16,7 +20,7 @@ const Navbar = () => {
 
             <div className='input-submit'>
                 <input type='email' placeholder='Email address' required />
-                <button> <p> Get Started </p>{<AiOutlineRight className='icon' />}</button>
+                <button onClick={()=>setSignIn(!signIn)}> <p> Get Started </p>{<AiOutlineRight className='icon' />}</button>
             </div>
         </div>
     </div>

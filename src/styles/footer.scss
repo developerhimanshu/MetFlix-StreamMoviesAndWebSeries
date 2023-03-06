@@ -3,8 +3,9 @@
     box-sizing: border-box;
 }
 .footer{
+    background-color: #111;
     display: flex;
-    max-width:1000px;
+    width:100%;
     flex-direction: column;
     padding:70px 50px;
     // align-items: center;

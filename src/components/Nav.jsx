@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-
+import {useNavigate} from 'react-router-dom'
 function Nav() {
   const [show, handleShow] = useState(false);
+  const navigate = useNavigate();
   const transitionNavBar = () =>{
     if(window.scrollY > 100){
         handleShow(true);
@@ -22,11 +23,17 @@ function Nav() {
         <div className="nav_content">
             <img 
             className = 'nav_logo'
+            onClick={()=>{
+              navigate('/');
+            }}
             src="/images/misc/logo.svg"
             alt="" 
             />
 
             <img 
+            onClick = {()=>{
+              navigate('/profile')
+            }}
             className='nav_avatar'
             src="/images/users/1.png" 
             alt="" />
