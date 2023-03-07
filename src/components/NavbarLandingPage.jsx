@@ -1,15 +1,17 @@
 import React, {useContext} from 'react'
 import {AiOutlineRight} from 'react-icons/ai'
+import { useNavigate } from 'react-router-dom'
 import { signInContext } from '../pages/Home'
 
 
 
 const Navbar = () => {
   const {signIn, setSignIn} = useContext(signInContext)
+  const navigate = useNavigate()
   return (
     <div className='navbar'>
         <div className = 'navi'>
-            <img src="/images/misc/logo.svg" alt="" />
+            <img onClick = {()=>(navigate('/'))} src="/images/misc/logo.svg" alt="" />
             <button onClick={()=>setSignIn(!signIn)}>Sign In</button>
         </div>
 

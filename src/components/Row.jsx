@@ -1,7 +1,13 @@
 import axios from '../axios'
 import React, { useEffect, useState } from 'react'
 
+
 const Row = ({title, fetchUrl, isLargeRow=false}) => {
+
+    function truncate(string, n){
+        return string?.length > n ? string.substr(0, n-1)+"...":string;
+    }
+
     const base_url =  `https://image.tmdb.org/t/p/original/`
     const [movies, setMovies] = useState([])
     useEffect(()=>{
@@ -16,7 +22,11 @@ const Row = ({title, fetchUrl, isLargeRow=false}) => {
     }, [])
 
     console.log(movies)
-    const movieCards = movies.map((movie, index)=>(
+    const movieCards = movies.map((movie, index)=>{
+        const rel = movie.release_date?movie.release_date:movie.first_air_date;
+        ;
+        return(
+    
         (isLargeRow && movie.poster_path||
             !isLargeRow && movie.backdrop_path)&&
             (
@@ -25,9 +35,9 @@ const Row = ({title, fetchUrl, isLargeRow=false}) => {
                 <img 
                 className={`row_poster ${isLargeRow &&"row_posterLarge"}`}
                 src={`${base_url}${isLargeRow?movie.poster_path:movie.backdrop_path}`} alt={movie.name} />
-                <p>{movie?.name||movie?.title||movie?.original_name}</p>
+                <p className='title'>{truncate(movie?.name||movie?.title||movie?.original_name, 24)}</p>
                 <div className="other-details">
-                    <p className='year'>{movie.first_air_date?.substring(0, 4)
+                    <p className='year'>{rel.substring(0, 4)
     }</p>
                     <p>Rating:{movie?.vote_average}/10</p>
                 </div>
@@ -35,7 +45,7 @@ const Row = ({title, fetchUrl, isLargeRow=false}) => {
             )
         
        
-    ))
+    )})
   return (
 
     <div className='row'>

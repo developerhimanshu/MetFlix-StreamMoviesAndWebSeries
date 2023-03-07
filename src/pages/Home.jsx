@@ -14,11 +14,11 @@ const Home = ({user, setUser}) => {
         signin?(
           <SignIn user={user} setUser={setUser} />
         ):(
-        <>
+        <div className='home'>
           <Navbar />
           <JumbotronContainer />
           <Accordian />
-        </>
+        </div>
       )}
         
     </signInContext.Provider>

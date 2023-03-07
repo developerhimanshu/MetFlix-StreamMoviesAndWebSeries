@@ -7,6 +7,7 @@ const SignIn = () => {
     
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
+    const nameRef = useRef(null)
 
     const register = (e) =>{
         e.preventDefault();
@@ -53,6 +54,7 @@ const SignIn = () => {
                 register={register}
                 emailRef={emailRef}
                 passwordRef={passwordRef}
+                nameRef = {nameRef}
                 />)
             }    
         </div>
@@ -75,12 +77,12 @@ const SignInComp = ({isSign, setSign, signInFunc, emailRef, passwordRef}) =>{
     )
 }
 
-const SignupComp = ({isSign, setSign, register, emailRef, passwordRef})=>{
+const SignupComp = ({isSign, setSign, register, emailRef, passwordRef, nameRef})=>{
     return (
         <div className='signInScreen'>
             <form className="signInForm signUpForm">
                 <h1>Sign Up</h1>
-                <input placeholder='Name' type="text" />
+                <input placeholder='Name' type="text" ref = {nameRef} />
                 <input placeholder ="Email" type="email" ref={emailRef} />
                 <input placeholder='password' type='password'  ref={passwordRef}/>
     

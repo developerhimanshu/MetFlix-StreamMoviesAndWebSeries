@@ -125,7 +125,7 @@
 }
 
 
-@media (max-width:400px){
+@media (max-width:600px){
     .navbar{
         .navi{
             padding:1rem 1rem;
@@ -152,6 +152,153 @@
                         font-size:1rem;
                     }
                 }
+            }
+        }
+    }
+
+    .signInScreen{
+        height:60vh;
+        .logo{
+            padding:10px 15px;
+            >img{
+            width:100px;
+            }
+        }
+        .signInForm{
+            border-radius: 0;
+            width:100vw;
+            left:0;
+
+            input{
+                padding:10px;
+                width:80vw;
+                font-size:1rem;
+                outline:none;
+                border:none;
+                border-radius:6px;
+            }
+        }
+    }
+
+    .banner{
+        width: 100vw;
+        height:50vh;
+        .banner_contents{
+            margin-left:30px;
+            padding-top:140px;
+    
+            .banner_title{
+                font-size:2rem;
+                font-weight:500;
+                padding-bottom: 0.3rem;
+            }
+
+            .banner_buttons{
+                button{
+                    width:100px;
+                }
+            }
+        }
+    }
+    .row{
+        .title{
+            margin-bottom:0;
+            margin-top:10px;
+        }
+        .cards{
+            .card{
+                margin-left:1px;
+                margin-right:1px;
+                margin-top:1rem;
+                .title{
+                    font-size:12px;
+                    font-weight: lighter;
+                    color:gray;
+                }
+                img{
+                    height:150px;
+                    margin-right: 10px;
+                }
+
+                .row_posterLarge{
+                    height:200px;
+                    width:130px;
+                }
+
+                .other-details{
+                    display: none;
+                }
+            }
+        }
+    }
+    .nav{
+        width:100vw;
+        height:8vh;
+        .nav_content{
+            .nav_logo{
+                width:120px;
+            }
+            
+            .nav_avatar{
+                width:35px;
+                height:35px;
+                object-fit: contain;
+            }
+        }
+    }
+
+    .profileScreen{
+        height:90vh;
+        width:100vw;
+        .profileScreen_body{
+            padding-top:25%;
+
+            h1{
+                font-size:2.5rem;
+            }
+        }
+        .profileScreen_info{
+            flex-direction: column;
+            align-items: center;
+
+            button{
+                height:55px;
+            }
+        }
+    }
+
+    .home{
+        .navbar{
+            .navi{
+                img{
+                    width:100px;
+                }
+                button{
+                    font-size:1.1rem;
+                    width:90px;
+                    height:33px;
+                }
+            }
+            .navi-body{
+                .input-submit{
+                    margin-top:20px;
+                    button{
+                        border-radius: 8px;
+                        width:180px;
+                        padding:10px 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    .accordian{
+        .input-submit{
+            margin-top:20px;
+            button{
+                border-radius: 8px;
+                font-size: 1.2rem;
+                width:200px;
             }
         }
     }

@@ -1,5 +1,6 @@
 .navbar{
     color:white;
+    background-color: black;
     height:100vh;
     border-bottom:solid 8px #222;
     background-image: url('/images/misc/home-bg.jpg');
@@ -18,6 +19,7 @@
             height:40px;
             background: transparent;
             object-fit: contain;
+            cursor: pointer;
         }
 
        
@@ -106,19 +108,16 @@
 
 .nav{
     position:fixed;
-    width:100%;
+    width:100vw;
     height:10vh;
     padding:1rem;
     z-index:1;
-
     transition-timing-function: ease-in;
     transition: all 0.5s;
-
 
     .nav_content{
         display: flex;
         justify-content: space-between;
-        
         img{
             height:5vh;
         }

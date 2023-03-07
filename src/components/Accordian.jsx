@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { AiOutlineRight } from 'react-icons/ai'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { BsX } from 'react-icons/bs'
 import { useState } from 'react'
 import faqsarr from '../fixtures/faqs.json'
+import { signInContext } from '../pages/Home'
 
 const Accordian = () => {
+    const {signIn, setSignIn} = useContext(signInContext);
 
     const [activeIndex, setActiveIndex] = useState(null);
 
@@ -31,7 +33,7 @@ const Accordian = () => {
             <h2>Ready to watch? Enter your email to create or restart your membership.</h2>
             <div className='input-submit'>
                 <input type='email' placeholder='Email address' required />
-                <button> <p> Get Started </p>{<AiOutlineRight className='icon' />}</button>
+                <button onClick={()=>{setSignIn(!signIn)}}> <p> Get Started </p>{<AiOutlineRight className='icon' />}</button>
             </div>
         </div>
     )
