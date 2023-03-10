@@ -3,6 +3,7 @@
     padding:0 2rem;
     .title{
         margin:3rem 0;
+        margin-bottom:1.5rem;
         h2{   
             font-weight:lighter;
             color:rgb(96, 94, 94);
@@ -20,7 +21,7 @@
         width:100%; 
         transition:transform 450ms;
         .card{
-            margin: 2rem 0.2rem;
+            // margin: 2rem 0.2rem;
             margin-right: 20px;
             height:auto;
             object-fit:scale-down;
@@ -40,21 +41,25 @@
                 
             }
             .row_posterLarge{
-                height:40vh;
-                width:30vh;
+                height:33vh;
+                width:25vh;
                 object-fit: cover;
             }
 
+            .title{
+                margin: 10px 0px;
+                color:rgb(126, 125, 125);
+            }
             .other-details{
                 margin-top:10px;
                 width:100%;
                 padding:0 20px 0 5px;
                 display: flex;
                 justify-content: space-between;
-                color:grey;
+                color:rgb(80, 79, 79);
                 font-size:0.8rem;
                 .year{
-                    border:0.09rem solid grey;
+                    border:0.09rem solid rgb(80, 79, 79);
                     border-radius: 4px;
                 }
             }

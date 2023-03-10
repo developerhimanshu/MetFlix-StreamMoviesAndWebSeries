@@ -1,5 +1,6 @@
 import axios from '../axios'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 
 const Row = ({title, fetchUrl, isLargeRow=false}) => {
@@ -21,27 +22,30 @@ const Row = ({title, fetchUrl, isLargeRow=false}) => {
         fetchData();
     }, [])
 
-    console.log(movies)
+
+    // console.log(movies)
     const movieCards = movies.map((movie, index)=>{
         const rel = movie.release_date?movie.release_date:movie.first_air_date;
         ;
         return(
-    
+       
         (isLargeRow && movie.poster_path||
             !isLargeRow && movie.backdrop_path)&&
             (
-                <div className='card' key={movie.id}>
-            
-                <img 
-                className={`row_poster ${isLargeRow &&"row_posterLarge"}`}
-                src={`${base_url}${isLargeRow?movie.poster_path:movie.backdrop_path}`} alt={movie.name} />
-                <p className='title'>{truncate(movie?.name||movie?.title||movie?.original_name, 24)}</p>
-                <div className="other-details">
-                    <p className='year'>{rel.substring(0, 4)
-    }</p>
-                    <p>Rating:{movie?.vote_average}/10</p>
+                <Link to={`/${movie.id}`} key={movie.id}>
+                    <div className='card' >
+                
+                    <img 
+                    className={`row_poster ${isLargeRow &&"row_posterLarge"}`}
+                    src={`${base_url}${isLargeRow?movie.poster_path:movie.backdrop_path}`} alt={movie.name} />
+                    <p className='title'>{truncate(movie?.name||movie?.title||movie?.original_name, 24)}</p>
+                    <div className="other-details">
+                        <p className='year'>{rel.substring(0, 4)
+        }</p>
+                        <p>Rating:{movie?.vote_average}/10</p>
+                    </div>
                 </div>
-            </div>
+            </Link>
             )
         
        
