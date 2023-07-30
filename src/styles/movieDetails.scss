@@ -1,33 +1,36 @@
-.movie-details{
-    color:white;
-    .movie{
-        height:65vh;
-        z-index: 1;
-        .movie-poster{
-           height: 100%;
-           background-size: cover;
-           object-fit: contain;
-           background-position: center center;
-            .movie_details{
-                height:100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                margin-left:1.5rem;
-                .movie_title{
-                    font-size:3rem;
-                }
-                .movie_buttons{
-                    >button{
-                        margin:0 2rem 0 0;
-                        width:100px;
-                        padding:0.5rem;
-                        outline:none;
-                        border:none;
-                    }
-                }
-            }
+.movie-details {
+  color: white;
+  .movie {
+    height: 65vh;
+    z-index: 1;
+    .movie-poster {
+      height: 100%;
+      background-size: cover;
+      object-fit: contain;
+      background-position: center center;
+      .movie_details {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 1.5rem;
+        .movie_title {
+          font-size: 3rem;
         }
+        .movie_buttons {
+          > button {
+            margin: 0 2rem 0 0;
+            width: 150px;
+            padding: 0.5rem;
+            outline: none;
+            border: none;
+            border-radius: 6px;
+            &:hover {
+              background-color: rgba(31, 31, 31, 0.656);
+            }
+          }
+        }
+      }
     }
-
+  }
 }

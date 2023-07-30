@@ -32,11 +32,13 @@ const MovieDetails = () => {
             backgroundImage: `url(https://image.tmdb.org/t/p/original${img})`,
           }}
         >
-          <div className="movie_details bg-black/50 z-1">
-            <h1 className="movie_title">{movie.title}</h1>
-            <div className="movie_buttons">
-              <button>play</button>
-              <button>Watch Later</button>
+          <div className="h-full bg-black/50">
+            <div className="movie_details">
+              <h1 className="movie_title">{movie.title}</h1>
+              <div className="movie_buttons ">
+                <button className="bg-white/40">play</button>
+                <button className="bg-white/40 rounded-md">Watch Later</button>
+              </div>
             </div>
           </div>
         </div>

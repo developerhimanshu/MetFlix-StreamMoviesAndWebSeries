@@ -9,11 +9,11 @@ function MainHome() {
   return (
     <div className="mainHome">
       <Nav />
-      <div className="flex gap-[9rem]">
-        <div className="block">
+      <div className="flex">
+        <div className="block w-[13rem]">
           <Sidebar />
         </div>
-        <div className="top-0 w-auto bg-black">
+        <div className="top-0 w-auto bg-black pl-4">
           <Banner />
           <Row
             title="NETFLIX ORIGINALS"

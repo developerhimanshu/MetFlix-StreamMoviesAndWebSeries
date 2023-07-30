@@ -25,9 +25,11 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
       ((isLargeRow && movie.poster_path) ||
         (!isLargeRow && movie.backdrop_path)) && (
         <Link to={`/${movie.id}`} key={movie.id}>
-          <div className="card">
+          <div
+            className={`${isLargeRow ? "row_posterLarge" : "row_poster"} card`}
+          >
             <img
-              className={`row_poster ${isLargeRow && "row_posterLarge"}`}
+              className={`${isLargeRow ? "ver" : "hor"} card`}
               src={`${base_url}${
                 isLargeRow ? movie.poster_path : movie.backdrop_path
               }`}
@@ -49,12 +51,12 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
     );
   });
   return (
-    <div className="row">
+    <div className="row pr-0">
       <div className="title">
         <h2>{title}</h2>
         <div className="hr" />
       </div>
-      <div className="cards overflow-x-scroll ">{movieCards}</div>
+      <div className="cards w-[85.7vw] mr-0">{movieCards}</div>
     </div>
   );
 };

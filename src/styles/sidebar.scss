@@ -1,8 +1,12 @@
-.sidebar > a {
-  background-color: gray;
-  width: 150px;
+.sidebar > div > a {
+  background-color: rgba(128, 128, 128, 0.458);
+  width: 11vw;
   padding: 10px;
-  margin-top: 12px;
+  margin-top: 6px;
   border-radius: 6px;
   text-align: center;
+  transition: all ease 0.3s;
+  &:hover {
+    background-color: gray;
+  }
 }

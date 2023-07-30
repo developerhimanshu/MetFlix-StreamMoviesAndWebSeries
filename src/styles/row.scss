@@ -1,6 +1,6 @@
 .row {
   color: white;
-  padding: 0 2rem;
+  // padding: 0 2rem;
   .title {
     margin: 3rem 0;
     margin-bottom: 1.5rem;
@@ -16,34 +16,51 @@
   }
   .cards {
     display: flex;
+    overflow: scroll;
     overflow-y: hidden;
     overflow-x: scroll;
-    width: 84.7vw;
     transition: transform 450ms;
-    .card {
-      // margin: 2rem 0.2rem;
-      margin-right: 20px;
-      height: auto;
-      object-fit: scale-down;
-      cursor: pointer;
+    .row_posterLarge {
+      height: 400px;
+      width: 12rem;
 
-      img {
+      border-radius: 12px;
+      object-fit: cover;
+
+      margin-right: 20px;
+    }
+    .row_poster {
+      height: 300px;
+      // margin: 2rem 0.2rem;
+      width: 10rem;
+      margin-right: 20px;
+      // object-fit: scale-down;
+      cursor: pointer;
+      width: 20rem;
+      margin-right: 20px;
+      // background-size: contain;
+      border-radius: 12px;
+      // object-fit: cover;
+    }
+    .card {
+      .hor {
         height: 200px;
-        margin-right: 20px;
-        background-size: contain;
         border-radius: 12px;
-        object-fit: contain;
+        margin: 5px 0;
         &:hover {
           transform: scale(1.03);
           opacity: 1;
         }
       }
-      .row_posterLarge {
-        height: 33vh;
-        width: 25vh;
-        object-fit: cover;
+      .ver {
+        margin: 5px 0;
+        height: 300px;
+        border-radius: 12px;
+        &:hover {
+          transform: scale(1.02);
+          opacity: 1;
+        }
       }
-
       .title {
         margin: 10px 0px;
         color: rgb(126, 125, 125);
