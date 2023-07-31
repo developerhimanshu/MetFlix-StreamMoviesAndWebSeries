@@ -107,12 +107,12 @@
 }
 
 .nav {
-  position: fixed;
+  background-color: black;
+  position: sticky;
   top: 0;
-  width: 100vw;
+  width: 86vw;
   height: 10vh;
   padding: 1rem;
-  z-index: 1;
   transition-timing-function: ease-in;
   transition: all 0.5s;
 
@@ -133,7 +133,4 @@
       cursor: pointer;
     }
   }
-}
-.nav_black {
-  background-color: black;
 }

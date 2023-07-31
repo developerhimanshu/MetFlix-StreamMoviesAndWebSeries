@@ -1,61 +1,59 @@
-.signInScreen{
-    height:100vh;
-    width:100vw;
-    color:white;
-    background-color: black;
-    position:relative;
-    background-image: url('/images/misc/home-bg.jpg');
-    
-    .logo{
-        padding:10px 20px;
-        >img{
-        width:150px;
-        }
+.signInScreen {
+  height: 100vh;
+  width: 100vw;
+  color: white;
+  background-color: black;
+  position: relative;
+  background-image: url("/images/misc/home-bg.jpg");
+
+  .logo {
+    padding: 10px 20px;
+    > img {
+      width: 150px;
+    }
+  }
+
+  .signInForm {
+    position: absolute;
+    left: 35%;
+    top: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgba(21, 21, 21, 0.704);
+    width: 25vw;
+    min-width: 300px;
+    padding: 20px;
+    border-radius: 12px;
+
+    input {
+      padding: 10px;
+      font-size: 1.1rem;
+      outline: none;
+      border: none;
+      border-radius: 6px;
+      color: black;
     }
 
-
-    .signInForm{
-        position: absolute;
-        left:35%;
-        top:25%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap:20px;
-        background-color:rgba(21, 21, 21, 0.704);
-        width:25vw;
-        min-width:300px;
-        padding:20px;
-        border-radius:12px;
-        
-        input{
-            padding:10px;
-            font-size:1.1rem;
-            outline:none;
-            border:none;
-            border-radius:6px;
-        }
-
-        button{
-            padding:10px 40px;
-            background-color: #E50914;
-            color:white;
-            font-size:1.2rem;
-            border:none;
-            border-radius: 5px;
-            cursor:pointer;
-
-        }
-        .sign{
-            background:none;
-            border: none;
-            padding:0;
-            cursor:pointer;
-        }
+    button {
+      padding: 10px 40px;
+      background-color: #e50914;
+      color: white;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
-    .signUpForm{
-        top:15%;
+    .sign {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
     }
-   
+  }
+  .signUpForm {
+    top: 15%;
+  }
 }

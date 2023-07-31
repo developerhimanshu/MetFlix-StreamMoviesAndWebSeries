@@ -1,8 +1,5 @@
 .banner {
   height: 55vh;
-  // width: 84.7vw;
-  // margin-left: 2rem;
-  // position:relative;
   background-size: cover;
   background-position: center center;
   object-fit: contain;
@@ -15,9 +12,9 @@
   background-color: transparent;
   margin-bottom: 40px;
   .banner_contents {
-    // z-index: 1;
     margin-left: 30px;
     padding-top: 140px;
+    width: 100%;
 
     .banner_title {
       font-size: 3rem;
@@ -59,7 +56,8 @@
   }
 
   .banner--fadeBottom {
-    height: 110vh;
+    height: 55vw;
+    // z-index: 10;
     background-image: linear-gradient(
       180deg,
       transparent,

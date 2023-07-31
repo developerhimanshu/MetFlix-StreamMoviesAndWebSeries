@@ -18,22 +18,14 @@ function Nav() {
     };
   }, []);
   return (
-    <div className={`nav ${show ? "nav_black" : ""}`}>
+    <div className="nav">
       <div className="nav_content flex px-4">
-        <img
-          className="nav_logo"
-          onClick={() => {
-            navigate("/");
-          }}
-          src="/images/misc/logo.svg"
-          alt=""
-        />
         <div className="text-white">Search...</div>
         <img
           onClick={() => {
             navigate("/profile");
           }}
-          className="nav_avatar"
+          className="nav_avatar cursor-pointer"
           src="/images/users/1.png"
           alt=""
         />

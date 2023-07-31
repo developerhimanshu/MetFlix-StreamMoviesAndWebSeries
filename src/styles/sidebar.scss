@@ -7,6 +7,9 @@
   text-align: center;
   transition: all ease 0.3s;
   &:hover {
+    background-color: rgb(157, 156, 156);
+  }
+  &:active {
     background-color: gray;
   }
 }

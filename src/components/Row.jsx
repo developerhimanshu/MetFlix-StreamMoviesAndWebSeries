@@ -56,7 +56,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
         <h2>{title}</h2>
         <div className="hr" />
       </div>
-      <div className="cards w-[85.7vw] mr-0">{movieCards}</div>
+      <div className="cards w-[85vw] mr-0">{movieCards}</div>
     </div>
   );
 };

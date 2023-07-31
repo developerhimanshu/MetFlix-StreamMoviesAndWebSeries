@@ -7,37 +7,41 @@ import Sidebar from "../components/sidebar";
 
 function MainHome() {
   return (
-    <div className="mainHome">
-      <Nav />
-      <div className="flex">
-        <div className="block w-[13rem]">
-          <Sidebar />
-        </div>
-        <div className="top-0 w-auto bg-black pl-4">
+    <div className="mainHome flex w-[100vw]">
+      <Sidebar />
+      <div className="flex flex-col flex-1 overflow-x-hidden">
+        <Nav />
+        <div className="bg-black">
           <Banner />
-          <Row
-            title="NETFLIX ORIGINALS"
-            fetchUrl={requests.fetchNetflixOriginals}
-            isLargeRow
-          />
-          <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
-          <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
-          <Row
-            title="Horror Movies"
-            fetchUrl={requests.fetchHorrorMovies}
-            isLargeRow
-          />
-          <Row
-            title="Romance Movies"
-            fetchUrl={requests.fetchRomanceMovies}
-            isLargeRow
-          />
-          <Row
-            title="Comedy Movies"
-            fetchUrl={requests.fetchCommedyMovies}
-            isLargeRow
-          />
-          <Row title="Top Rated" fetchUrl={requests.fetchTopRated} isLargeRow />
+          <div className="pl-[2.7rem]">
+            <Row
+              title="NETFLIX ORIGINALS"
+              fetchUrl={requests.fetchNetflixOriginals}
+              isLargeRow
+            />
+            <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
+            <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
+            <Row
+              title="Horror Movies"
+              fetchUrl={requests.fetchHorrorMovies}
+              isLargeRow
+            />
+            <Row
+              title="Romance Movies"
+              fetchUrl={requests.fetchRomanceMovies}
+              isLargeRow
+            />
+            <Row
+              title="Comedy Movies"
+              fetchUrl={requests.fetchCommedyMovies}
+              isLargeRow
+            />
+            <Row
+              title="Top Rated"
+              fetchUrl={requests.fetchTopRated}
+              isLargeRow
+            />
+          </div>
         </div>
       </div>
     </div>

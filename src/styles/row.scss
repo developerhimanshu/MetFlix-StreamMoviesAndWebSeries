@@ -1,6 +1,5 @@
 .row {
   color: white;
-  // padding: 0 2rem;
   .title {
     margin: 3rem 0;
     margin-bottom: 1.5rem;
@@ -15,13 +14,15 @@
     }
   }
   .cards {
+    white-space: nowrap;
     display: flex;
-    overflow: scroll;
+    // flex-wrap: wrap;
+    // overflow: scroll;
     overflow-y: hidden;
     overflow-x: scroll;
     transition: transform 450ms;
     .row_posterLarge {
-      height: 400px;
+      height: 350px;
       width: 12rem;
 
       border-radius: 12px;
@@ -45,6 +46,7 @@
     .card {
       .hor {
         height: 200px;
+        width: 350px;
         border-radius: 12px;
         margin: 5px 0;
         &:hover {
@@ -54,7 +56,7 @@
       }
       .ver {
         margin: 5px 0;
-        height: 300px;
+        height: 250px;
         border-radius: 12px;
         &:hover {
           transform: scale(1.02);
@@ -79,8 +81,31 @@
         }
       }
     }
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    // &::-webkit-scrollbar {
+    //   display: none;
+    // }
   }
+}
+
+.row .cards::-webkit-scrollbar {
+  width: 23px;
+  border-radius: 12px;
+  height: 15px;
+}
+
+.row .cards::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+}
+
+.row .cards::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.row .cards::-webkit-scrollbar-track {
+  background-color: rgba(67, 67, 67, 0.62);
+}
+
+.row .cards::-webkit-scrollbar-track:hover {
+  background-color: rgba(67, 67, 67, 0.62);
 }
