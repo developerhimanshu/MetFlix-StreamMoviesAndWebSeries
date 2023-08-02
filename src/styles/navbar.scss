@@ -108,9 +108,9 @@
 
 .nav {
   background-color: black;
-  position: sticky;
+  display: block;
   top: 0;
-  width: 86vw;
+  // width: 86vw;
   height: 10vh;
   padding: 1rem;
   transition-timing-function: ease-in;

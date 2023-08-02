@@ -4,6 +4,7 @@ import Nav from "../components/Nav";
 import requests from "../Request";
 import Row from "../components/Row";
 import Sidebar from "../components/sidebar";
+import Movies from "../components/Movies";
 
 function MainHome() {
   return (
@@ -11,7 +12,8 @@ function MainHome() {
       <Sidebar />
       <div className="flex flex-col flex-1 overflow-x-hidden">
         <Nav />
-        <div className="bg-black">
+        <Movies />
+        {/* <div className="bg-black">
           <Banner />
           <div className="pl-[2.7rem]">
             <Row
@@ -42,7 +44,7 @@ function MainHome() {
               isLargeRow
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

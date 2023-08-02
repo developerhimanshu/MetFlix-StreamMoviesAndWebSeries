@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 function Nav() {
   const [show, handleShow] = useState(false);
   const navigate = useNavigate();
@@ -17,8 +18,11 @@ function Nav() {
       window.removeEventListener("scroll", transitionNavBar);
     };
   }, []);
+
+  const navClass = show ? "nav sticky top-0 " : "nav h-10";
+
   return (
-    <div className="nav">
+    <div className={navClass}>
       <div className="nav_content flex px-4">
         <div className="text-white">Search...</div>
         <img
