@@ -7,9 +7,9 @@ import { auth } from "../firebase";
 const ProfileScreen = () => {
   const user = useSelector(selectUser);
   return (
-    <div className="profileScreen">
+    <div className="profileScreen flex ">
       <Sidebar />
-      <div>
+      <div className="w-full">
         <Nav />
         <div className="profileScreen_body">
           <h1>Edit Profile</h1>

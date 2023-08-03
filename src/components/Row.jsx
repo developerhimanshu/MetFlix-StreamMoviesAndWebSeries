@@ -24,7 +24,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
     return (
       ((isLargeRow && movie.poster_path) ||
         (!isLargeRow && movie.backdrop_path)) && (
-        <Link to={`/${movie.id}`} key={movie.id}>
+        <Link to={`/movie/${movie.id}`} key={movie.id}>
           <div
             className={`${isLargeRow ? "row_posterLarge" : "row_poster"} card`}
           >

@@ -3,7 +3,6 @@ const base_url = `https://image.tmdb.org/t/p/original/`;
 import { Grid, Grow, Typography, Tooltip, Rating } from "@mui/material";
 import { Link } from "react-router-dom";
 const Movie = ({ movie, i }) => {
-  console.log(movie);
   return (
     <Grid item xs={12} sm={6} md={4} lg={3} xl={2} className="p-[10px]">
       {/* <img src={`${base_url}${movie.backdrop_path}`} className="w-[230px]" /> */}
