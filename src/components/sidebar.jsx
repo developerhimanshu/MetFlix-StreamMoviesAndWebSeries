@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useGetGenresQuery } from "../services/TMDB";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, ListItem, ListItemText } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { selectGenreOrCategory } from "../features/currentGenreOrCategory";
 const categories = [
   { label: "Popular", value: "popular" },
   { label: "Top Rated", value: "top_rated" },
@@ -16,6 +18,7 @@ const demoCategories = [
 // const demoCategories = ["Comedy", "Acton", "Horror", "Animation"];
 const Sidebar = () => {
   const { data, isLoading } = useGetGenresQuery();
+  const dispatch = useDispatch();
   console.log(data);
   if (isLoading) {
     return (
@@ -41,7 +44,11 @@ const Sidebar = () => {
         <div className="w-full flex flex-col align-center ">
           {categories.map(({ label, value }) => (
             <Link key={value} to={`/${value}`}>
-              {label}
+              <ListItem onClick={() => dispatch(selectGenreOrCategory(value))}>
+                <ListItemText>
+                  <p> {label}</p>
+                </ListItemText>
+              </ListItem>
             </Link>
           ))}
         </div>
@@ -49,8 +56,8 @@ const Sidebar = () => {
         <p className="text-[#787878]">Generes</p>
         <div className="w-full flex flex-col align-center">
           {data.genres?.map(({ id, name }) => (
-            <Link key={id} to={`genres/${id}`}>
-              {name}
+            <Link key={id} to={`/`}>
+              <p onClick={() => dispatch(selectGenreOrCategory(id))}> {name}</p>
             </Link>
           ))}
         </div>
