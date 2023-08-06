@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useGetGenresQuery } from "../services/TMDB";
 import { Box, CircularProgress, ListItem, ListItemText } from "@mui/material";
@@ -17,6 +17,10 @@ const demoCategories = [
 ];
 // const demoCategories = ["Comedy", "Acton", "Horror", "Animation"];
 const Sidebar = () => {
+  const { genreOrCategoryName } = useSelector(
+    (state) => state.currentGenreOrCategory
+  );
+  console.log(genreOrCategoryName);
   const { data, isLoading } = useGetGenresQuery();
   const dispatch = useDispatch();
   console.log(data);
@@ -43,12 +47,11 @@ const Sidebar = () => {
         <p className="text-[#787878] mt-6">Categories</p>
         <div className="w-full flex flex-col align-center ">
           {categories.map(({ label, value }) => (
-            <Link key={value} to={`/${value}`}>
-              <ListItem onClick={() => dispatch(selectGenreOrCategory(value))}>
-                <ListItemText>
-                  <p> {label}</p>
-                </ListItemText>
-              </ListItem>
+            <Link key={value} to={`/`}>
+              <p onClick={() => dispatch(selectGenreOrCategory(value))}>
+                {" "}
+                {label}
+              </p>
             </Link>
           ))}
         </div>

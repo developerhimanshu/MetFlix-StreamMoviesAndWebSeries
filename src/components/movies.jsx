@@ -2,9 +2,21 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useGetMoviesQuery } from "../services/TMDB";
 import MovieList from "./MovieList";
+import { selectGenreOrCategory } from "../features/currentGenreOrCategory";
 import { CircularProgress, Typography, Box } from "@mui/material";
+
 const Movies = () => {
-  const { data, error, isLoading } = useGetMoviesQuery();
+  const [page, setPage] = useState(1);
+  const { genreOrCategoryName } = useSelector(
+    (state) => state.currentGenreOrCategory
+  );
+  const { data, error, isLoading } = useGetMoviesQuery({
+    genreOrCategoryName,
+    page,
+  });
+  useEffect(() => {
+    setPage(1); // Reset the page to 1 when changing genres
+  }, [genreOrCategoryName]);
 
   if (isLoading) {
     return (
