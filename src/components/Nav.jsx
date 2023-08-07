@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Search from "./Search";
 
 function Nav() {
   const [show, handleShow] = useState(false);
@@ -24,7 +25,7 @@ function Nav() {
   return (
     <div className={navClass}>
       <div className="nav_content flex px-4">
-        <div className="text-white">Search...</div>
+        <Search />
         <img
           onClick={() => {
             navigate("/profile");

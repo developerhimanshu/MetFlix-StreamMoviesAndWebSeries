@@ -10,7 +10,7 @@ const Movies = () => {
   const { genreOrCategoryName } = useSelector(
     (state) => state.currentGenreOrCategory
   );
-  const { data, error, isLoading } = useGetMoviesQuery({
+  const { data, error, isFetching } = useGetMoviesQuery({
     genreOrCategoryName,
     page,
   });
@@ -18,7 +18,7 @@ const Movies = () => {
     setPage(1); // Reset the page to 1 when changing genres
   }, [genreOrCategoryName]);
 
-  if (isLoading) {
+  if (isFetching) {
     return (
       <Box display="flex" justifyContent="center">
         <CircularProgress size="4rem" />
