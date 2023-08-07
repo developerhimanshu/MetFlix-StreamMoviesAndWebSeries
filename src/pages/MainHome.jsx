@@ -4,7 +4,6 @@ import Nav from "../components/Nav";
 import requests from "../Request";
 import Row from "../components/Row";
 import Sidebar from "../components/sidebar";
-import Movies from "../components/Movies";
 
 function MainHome() {
   return (
