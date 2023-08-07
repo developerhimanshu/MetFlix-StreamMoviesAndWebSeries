@@ -1,1 +1,1 @@
-[Deployed Here] (https://netflix-clone-298ae.web.app)
+[Deployed Here](https://metflix-streaming.netlify.app/)
