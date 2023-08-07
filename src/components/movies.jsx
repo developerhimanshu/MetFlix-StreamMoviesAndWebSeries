@@ -7,12 +7,13 @@ import { CircularProgress, Typography, Box } from "@mui/material";
 
 const Movies = () => {
   const [page, setPage] = useState(1);
-  const { genreOrCategoryName } = useSelector(
+  const { genreOrCategoryName, searchQuery } = useSelector(
     (state) => state.currentGenreOrCategory
   );
   const { data, error, isFetching } = useGetMoviesQuery({
     genreOrCategoryName,
     page,
+    searchQuery,
   });
   useEffect(() => {
     setPage(1); // Reset the page to 1 when changing genres
