@@ -44,7 +44,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainHome />} />
             <Route path="/profile" element={<ProfileScreen />} />
-            <Route path="/:id" element={<MovieDetails />} />
+            <Route path="/movie/:id" element={<MovieDetails />} />
             <Route path="/movies" element={<Movies />} />
           </Routes>
         )}

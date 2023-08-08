@@ -24,7 +24,7 @@ function Nav() {
 
   return (
     <div className={navClass}>
-      <div className="nav_content flex px-4">
+      <div className="nav_content flex px-4 w-[83vw]">
         <Search />
         <img
           onClick={() => {
