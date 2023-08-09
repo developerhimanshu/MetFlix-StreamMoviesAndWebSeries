@@ -55,7 +55,7 @@ const Sidebar = () => {
             </Link>
           ))}
         </div>
-        <div className="p-[1.5rem]"></div>
+        <div className="mt-[1.8rem] mb-[1.5rem] border-b-2 border-white/50"></div>
         <p className="text-[#787878]">Generes</p>
         <div className="w-full flex flex-col align-center">
           {data.genres?.map(({ id, name }) => (
