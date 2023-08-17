@@ -1,29 +1,19 @@
-import React, { createContext, useContext, useState } from 'react'
-import { JumbotronContainer } from '../containers/jumbotron'
-import Accordian from '../components/Accordian'
-import Navbar from '../components/NavbarLandingPage'
-import SignIn from '../components/SignIn';
+import React, { createContext, useContext, useState } from "react";
+import { JumbotronContainer } from "../containers/jumbotron";
+import Accordian from "../components/Accordian";
+import Navbar from "../components/NavbarLandingPage";
 
 const signInContext = createContext();
 
-const Home = ({user, setUser}) => {
-  const [signin, setSignIn] = useState(false)
+const Home = () => {
   return (
-    <signInContext.Provider value={{signin, setSignIn}}>
-      {
-        signin?(
-          <SignIn user={user} setUser={setUser} />
-        ):(
-        <div className='home'>
-          <Navbar />
-          <JumbotronContainer />
-          <Accordian />
-        </div>
-      )}
-        
-    </signInContext.Provider>
-  )
-}
+    <div className="home">
+      <Navbar />
+      <JumbotronContainer />
+      <Accordian />
+    </div>
+  );
+};
 
-export { signInContext}
-export default Home
+export { signInContext };
+export default Home;

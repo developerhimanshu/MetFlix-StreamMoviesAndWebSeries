@@ -8,12 +8,9 @@ import Movies from "../components/movies";
 
 function MainHome() {
   return (
-    <div className="mainHome flex w-[100vw]">
-      <Sidebar />
-      <div className="flex flex-col flex-1 overflow-x-hidden">
-        <Nav />
-        <Movies />
-        {/* <div className="bg-black">
+    <div className="flex flex-col flex-1 overflow-x-hidden">
+      <Movies />
+      {/* <div className="bg-black">
           <Banner />
           <div className="pl-[2.7rem]">
             <Row
@@ -45,7 +42,6 @@ function MainHome() {
             />
           </div>
         </div> */}
-      </div>
     </div>
   );
 }

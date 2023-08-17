@@ -23,6 +23,7 @@ function Search() {
         type="text"
         className="bg-transparent border-2 rounded-2xl er-solid border-white/60 outline-none px-2 py-1 w-[40vw]"
         onKeyDown={handleKeyPress}
+        placeholder="Search your favourite movie..."
         onChange={(e) => setQuery(e.target.value)}
       />
       <AiOutlineSearch

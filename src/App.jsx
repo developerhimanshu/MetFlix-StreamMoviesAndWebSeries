@@ -1,54 +1,53 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Footer from "./components/Footer";
+import { Routes, Route } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 import Home from "./pages/Home";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 import MainHome from "./pages/MainHome";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase";
-import { useDispatch, useSelector } from "react-redux";
-import { login, logout, selectUser } from "./features/userSlice";
 import ProfileScreen from "./pages/ProfileScreen";
 import MovieDetails from "./pages/MovieDetails";
 import Movies from "./components/movies";
+import Footer from "./components/Footer";
+import Sidebar from "./components/sidebar";
+import Nav from "./components/Nav";
 
 function App() {
-  const user = useSelector(selectUser);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        dispatch(
-          login({
-            uid: user.uid,
-            email: user.email,
-          })
-        );
-      } else {
-        dispatch(logout());
-      }
-    });
-    return unsubscribe;
-  }, [dispatch]);
-  return (
-    <div className="app">
-      <Router>
-        {!user ? (
-          <>
-            <Home />
+  const { user } = useAuth();
+  console.log(user);
+  const renderRoutes = () => {
+    if (!user) {
+      return (
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          {/* <Route path="/movies" element={<Movies />} /> */}
+          {/* <Route path="*" element={<Navigate to="/login" />} /> */}
+        </Routes>
+      );
+    } else {
+      return (
+        <div className="flex">
+          <div>
+            <Sidebar />
+          </div>
+          <div>
+            <Nav />
             <Routes>
+              <Route path="/" element={<MainHome />} />
+              <Route path="/profile" element={<ProfileScreen />} />
+              <Route path="/movie/:id" element={<MovieDetails />} />
               <Route path="/movies" element={<Movies />} />
             </Routes>
-          </>
-        ) : (
-          <Routes>
-            <Route path="/" element={<MainHome />} />
-            <Route path="/profile" element={<ProfileScreen />} />
-            <Route path="/movie/:id" element={<MovieDetails />} />
-            <Route path="/movies" element={<Movies />} />
-          </Routes>
-        )}
-      </Router>
+          </div>
+        </div>
+      );
+    }
+  };
+
+  return (
+    <div className="app">
+      {renderRoutes()}
       <Footer />
     </div>
   );

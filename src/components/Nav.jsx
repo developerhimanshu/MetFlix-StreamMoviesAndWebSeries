@@ -20,7 +20,7 @@ function Nav() {
     };
   }, []);
 
-  const navClass = show ? "nav sticky top-0 " : "nav h-10";
+  const navClass = show ? "nav sticky top-0 z-10" : "nav h-10 z-10";
 
   return (
     <div className={navClass}>
