@@ -25,7 +25,7 @@ function Register() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/v1/auth/register",
+        "https://metflix-backend.onrender.com/api/v1/auth/register",
         formData
       );
       login(response.data);

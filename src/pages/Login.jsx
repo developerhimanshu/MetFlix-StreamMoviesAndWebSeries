@@ -16,7 +16,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/v1/auth/login",
+        "https://metflix-backend.onrender.com/api/v1/auth/login",
         loginData
       );
       // console.log("response:", response.data);
