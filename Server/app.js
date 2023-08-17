@@ -6,6 +6,8 @@ const authRoute = require("./routes/auth.js");
 const port = process.env.PORT || 3001;
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handle");
+const cors = require("cors");
+app.use(cors());
 
 app.use(express.json());
 
