@@ -27,10 +27,8 @@ function App() {
       );
     } else {
       return (
-        <div className="flex">
-          <div>
-            <Sidebar />
-          </div>
+        <div className="flex ">
+          <Sidebar />
           <div>
             <Nav />
             <Routes>

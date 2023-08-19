@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useAuth } from "../AuthContext";
 import { Link } from "react-router-dom";
 import { Navi } from "../components/NavbarLandingPage";
+import Loading from "./loading";
 
 const Login = () => {
   const { login } = useAuth();
@@ -12,8 +13,11 @@ const Login = () => {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await axios.post(
         "https://metflix-backend.onrender.com/api/v1/auth/login",
@@ -24,6 +28,7 @@ const Login = () => {
     } catch (err) {
       console.log(err);
     }
+    setLoading(false);
   };
 
   const handleChange = (e) => {
@@ -36,28 +41,36 @@ const Login = () => {
 
   return (
     <div className="signInScreen">
-      <Navi />
-      <form className="signInForm signUpForm" onSubmit={handleSubmit}>
-        <h1>Sign In</h1>
-        <input
-          placeholder="Email"
-          name="email"
-          type="email"
-          value={loginData.email}
-          onChange={handleChange}
-        />
-        <input
-          placeholder="Password"
-          name="password"
-          type="password"
-          value={loginData.password}
-          onChange={handleChange}
-        />
-        <button type="submit">Sign In</button>
-        <Link to="/register">
-          Don't have an account? <button className="sign">sign Up!</button>
-        </Link>
-      </form>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <Navi />
+          <form className="signInForm signUpForm" onSubmit={handleSubmit}>
+            <h1 className="text-2xl font-bold">Sign In</h1>
+            <input
+              placeholder="Email"
+              name="email"
+              type="email"
+              value={loginData.email}
+              onChange={handleChange}
+              required
+            />
+            <input
+              placeholder="Password"
+              name="password"
+              type="password"
+              value={loginData.password}
+              onChange={handleChange}
+              required
+            />
+            <button type="submit">Sign In</button>
+            <Link to="/register">
+              Don't have an account? <button className="sign">sign Up!</button>
+            </Link>
+          </form>
+        </>
+      )}
     </div>
   );
 };

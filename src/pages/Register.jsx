@@ -3,6 +3,7 @@ import { useAuth } from "../AuthContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Navi } from "../components/NavbarLandingPage";
+import Loading from "./loading";
 
 function Register() {
   const { login } = useAuth();
@@ -11,6 +12,8 @@ function Register() {
     email: "",
     password: "",
   });
+
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -22,7 +25,7 @@ function Register() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setLoading(true);
     try {
       const response = await axios.post(
         "https://metflix-backend.onrender.com/api/v1/auth/register",
@@ -32,40 +35,52 @@ function Register() {
     } catch (error) {
       console.error("Error:", error);
     }
+    setLoading(false);
   };
 
   return (
     <div className="signInScreen">
       <Navi />
-      <form className="signInForm signUpForm" onSubmit={handleSubmit}>
-        <h1>Sign Up</h1>
-        <input
-          placeholder="Name"
-          name="name"
-          value={formData.name}
-          type="text"
-          onChange={handleChange}
-        />
-        <input
-          placeholder="Email"
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        <input
-          placeholder="password"
-          name="password"
-          type="password"
-          value={formData.password}
-          onChange={handleChange}
-        />
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <form className="signInForm signUpForm" onSubmit={handleSubmit}>
+            <h1 className="text-2xl font-bold">Sign Up</h1>
 
-        <button type="submit">Sign Up</button>
-        <Link to="/login">
-          Already have an account? <button className="sign">sign In!</button>
-        </Link>
-      </form>
+            <input
+              placeholder="Name"
+              name="name"
+              value={formData.name}
+              type="text"
+              onChange={handleChange}
+              required
+            />
+            <input
+              placeholder="Email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <input
+              placeholder="password"
+              name="password"
+              type="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+
+            <button type="submit">Sign Up</button>
+            <Link to="/login">
+              Already have an account?{" "}
+              <button className="sign">sign In!</button>
+            </Link>
+          </form>
+        </>
+      )}
     </div>
   );
 }

@@ -32,7 +32,7 @@ const Sidebar = () => {
     );
   }
   return (
-    <div className="text-white  sticky left-0 top-0  bg-black p-3 h-[100vh] min-w-[180px] flex flex-col  border-r border-[#2a2a2a] overflow-y-scroll overflow-x-hidden">
+    <div className="text-white  sticky left-0 top-0  bg-black p-3  min-w-[150px] w-[13vw] h-screen flex flex-col  border-r border-[#2a2a2a] overflow-y-scroll overflow-x-hidden">
       <Link to="/">
         <img
           className=""
