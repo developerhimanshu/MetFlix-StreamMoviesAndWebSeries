@@ -3,7 +3,7 @@ import { useAuth } from "../AuthContext";
 const ProfileScreen = () => {
   const { user, logout } = useAuth();
   return (
-    <div className="w-full profileScreen">
+    <div className="w-[89vw] profileScreen">
       <div className="profileScreen_body">
         <h1>Edit Profile</h1>
         <div className="profileScreen_info">

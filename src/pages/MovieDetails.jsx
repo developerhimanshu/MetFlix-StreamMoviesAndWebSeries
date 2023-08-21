@@ -2,7 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import Nav from "../components/Nav";
+import { ToastContainer, toast } from "react-toastify";
+import {
+  AiOutlineHeart,
+  AiFillHeart,
+  AiFillPlusCircle,
+  AiFillMinusCircle,
+} from "react-icons/ai";
+import "react-toastify/dist/ReactToastify.css";
+
 import { API_KEY } from "../Request";
 import {
   Box,
@@ -21,8 +29,42 @@ const MovieDetails = () => {
   const dispatch = useDispatch();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [favorite, setFavorite] = useState(false);
+  const [watchLater, setWatchLater] = useState(false);
   const navigate = useNavigate();
   let genreBtns = "";
+
+  const addToFavourite = () => {
+    try {
+      if (!favorite) {
+        toast.success("Add to favorites"),
+          {
+            position: toast.POSITION.TOP_CENTER,
+          };
+      } else {
+        toast.success("Removed from favorites"),
+          {
+            position: toast.POSITION.TOP_CENTER,
+          };
+      }
+      setFavorite(!favorite);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const addToWatchLater = () => {
+    try {
+      if (!watchLater) {
+        toast.success("Add to Watch List");
+      } else {
+        toast.success("Removed from Watch List");
+      }
+      setWatchLater(!watchLater);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   if (!loading) {
     genreBtns = movie.genres?.map((genre) => {
       return (
@@ -56,7 +98,7 @@ const MovieDetails = () => {
       <CircularProgress size="8rem" />
     </Box>
   ) : (
-    <div className="movie w-full bg-gray-700 h-full">
+    <div className="movie w-full bg-gray-700">
       <div className="flex w-[100%] pt-10  text-white justify-around gap-4">
         <img
           src={`https://image.tmdb.org/t/p/original${img}`}
@@ -118,8 +160,64 @@ const MovieDetails = () => {
                 })
                 .slice(0, 6)}
           </Grid>
+          <Grid item container style={{ marginTop: "2rem" }}>
+            <div className="flex gap-[3rem]">
+              <Grid item xs={12} sm={6}>
+                <ButtonGroup size="small" variant="outlined">
+                  <Button
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={movie?.homepage}
+                  >
+                    Website
+                  </Button>
+                  <Button
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={`https://www.imdb.com/title/${movie?.imdb_id}`}
+                  >
+                    IMDB
+                  </Button>
+                  <Button onClick={() => {}} href="#">
+                    Trailer
+                  </Button>
+                </ButtonGroup>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <ButtonGroup size="small" variant="outlined">
+                  <Button onClick={addToFavourite}>
+                    {favorite ? (
+                      <p className="flex items-center gap-2">
+                        UnFavourite
+                        <AiFillHeart size={18} />
+                      </p>
+                    ) : (
+                      <p className="flex items-center gap-2">
+                        Favourite
+                        <AiOutlineHeart size={18} />
+                      </p>
+                    )}
+                  </Button>
+                  <Button onClick={addToWatchLater}>
+                    {watchLater ? (
+                      <p className="flex items-center gap-2">
+                        Watchlist
+                        <AiFillMinusCircle size={18} />
+                      </p>
+                    ) : (
+                      <p className="flex items-center gap-2">
+                        Watchlist
+                        <AiFillPlusCircle size={18} />
+                      </p>
+                    )}
+                  </Button>
+                </ButtonGroup>
+              </Grid>
+            </div>
+          </Grid>
         </div>
       </div>
+      <ToastContainer position="top-center" autoClose={500} />
     </div>
   );
 };
