@@ -21,7 +21,6 @@ import {
   Rating,
   Typography,
 } from "@mui/material";
-import Sidebar from "../components/sidebar";
 import { selectGenreOrCategory } from "../features/currentGenreOrCategory";
 
 const MovieDetails = () => {
@@ -33,15 +32,37 @@ const MovieDetails = () => {
   const [watchLater, setWatchLater] = useState(false);
   const navigate = useNavigate();
   let genreBtns = "";
+  const token = localStorage.getItem("token");
 
-  const addToFavourite = () => {
+  const addToFavourite = async () => {
     try {
+      const data = {
+        movieId: params.id,
+      };
       if (!favorite) {
+        const response = axios.post(
+          "https://metflix-backend.onrender.com/api/v1/movie/favourite",
+          data,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
         toast.success("Add to favorites"),
           {
             position: toast.POSITION.TOP_CENTER,
           };
       } else {
+        const response = axios.delete(
+          `https://metflix-backend.onrender.com/api/v1/movie/favourite/${params.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         toast.success("Removed from favorites"),
           {
             position: toast.POSITION.TOP_CENTER,
@@ -52,11 +73,31 @@ const MovieDetails = () => {
       console.log(err);
     }
   };
-  const addToWatchLater = () => {
+  const addToWatchLater = async () => {
     try {
+      const data = {
+        movieId: params.id,
+      };
       if (!watchLater) {
-        toast.success("Add to Watch List");
+        const response = axios.post(
+          "https://metflix-backend.onrender.com/api/v1/movie/watchlater",
+          data,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        toast.success("Added to Watch List");
       } else {
+        const response = axios.delete(
+          `https://metflix-backend.onrender.com/api/v1/movie/watchlater/${params.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         toast.success("Removed from Watch List");
       }
       setWatchLater(!watchLater);

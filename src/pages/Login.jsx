@@ -24,6 +24,11 @@ const Login = () => {
         loginData
       );
       // console.log("response:", response.data);
+      const token = response.data.token;
+      const headers = {
+        Authorization: "Bearer " + token,
+      };
+      localStorage.setItem("token", token);
       login(response.data);
     } catch (err) {
       console.log(err);

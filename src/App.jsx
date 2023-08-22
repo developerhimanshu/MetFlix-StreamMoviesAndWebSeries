@@ -10,6 +10,8 @@ import Movies from "./components/movies";
 import Footer from "./components/Footer";
 import Sidebar from "./components/sidebar";
 import Nav from "./components/Nav";
+import Favourites from "./pages/Favourites";
+import WatchLater from "./pages/WatchLater";
 
 function App() {
   const { user } = useAuth();
@@ -21,21 +23,21 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/movies" element={<Movies />} /> */}
-          {/* <Route path="*" element={<Navigate to="/login" />} /> */}
         </Routes>
       );
     } else {
       return (
         <div className="flex ">
           <Sidebar />
-          <div>
+          <div className="flex flex-col w-full">
             <Nav />
             <Routes>
               <Route path="/" element={<MainHome />} />
               <Route path="/profile" element={<ProfileScreen />} />
               <Route path="/movie/:id" element={<MovieDetails />} />
               <Route path="/movies" element={<Movies />} />
+              <Route path="/favourites" element={<Favourites />} />
+              <Route path="/watchlater" element={<WatchLater />} />
             </Routes>
           </div>
         </div>

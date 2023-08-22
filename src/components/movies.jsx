@@ -25,7 +25,7 @@ const Movies = () => {
       </Box>
     );
   }
-  if (!data.results.length) {
+  if (!data.results?.length) {
     return (
       <Box display="flex" alignItems="center" mt="20px">
         <Typography variant="h4">
