@@ -28,19 +28,57 @@ const MovieDetails = () => {
   const dispatch = useDispatch();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [favorite, setFavorite] = useState(false);
-  const [watchLater, setWatchLater] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [isWatchLater, setIsWatchLater] = useState(false);
   const navigate = useNavigate();
   let genreBtns = "";
   const token = localStorage.getItem("token");
+
+  const [favMovieData, setFavMovieData] = useState(null);
+  const [watchMovieData, setWatchMovieData] = useState(null);
+  useEffect(() => {
+    const getData = async () => {
+      const response = await axios.get(
+        "https://metflix-backend.onrender.com/api/v1/movie/favourite",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setFavMovieData(response.data.movies);
+    };
+    getData();
+  }, [token]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await axios.get(
+        "https://metflix-backend.onrender.com/api/v1/movie/watchlater",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setWatchMovieData(response.data.movies);
+    };
+    getData();
+  }, [token]);
+
+  // Update the state variables directly without arrow functions
+  useEffect(() => {
+    setIsFavorite(favMovieData?.some((data) => data.movieId === params.id));
+    setIsWatchLater(watchMovieData?.some((data) => data.movieId === params.id));
+  }, [favMovieData, watchMovieData, params.id]);
 
   const addToFavourite = async () => {
     try {
       const data = {
         movieId: params.id,
       };
-      if (!favorite) {
-        const response = axios.post(
+      if (!isFavorite) {
+        const response = await axios.post(
           "https://metflix-backend.onrender.com/api/v1/movie/favourite",
           data,
           {
@@ -49,13 +87,13 @@ const MovieDetails = () => {
             },
           }
         );
-
+        setIsFavorite(!isFavorite);
         toast.success("Add to favorites"),
           {
             position: toast.POSITION.TOP_CENTER,
           };
       } else {
-        const response = axios.delete(
+        const response = await axios.delete(
           `https://metflix-backend.onrender.com/api/v1/movie/favourite/${params.id}`,
           {
             headers: {
@@ -63,12 +101,12 @@ const MovieDetails = () => {
             },
           }
         );
+        setIsFavorite(!isFavorite);
         toast.success("Removed from favorites"),
           {
             position: toast.POSITION.TOP_CENTER,
           };
       }
-      setFavorite(!favorite);
     } catch (err) {
       console.log(err);
     }
@@ -78,8 +116,8 @@ const MovieDetails = () => {
       const data = {
         movieId: params.id,
       };
-      if (!watchLater) {
-        const response = axios.post(
+      if (!isWatchLater) {
+        const response = await axios.post(
           "https://metflix-backend.onrender.com/api/v1/movie/watchlater",
           data,
           {
@@ -88,9 +126,10 @@ const MovieDetails = () => {
             },
           }
         );
+        setIsWatchLater(!isWatchLater);
         toast.success("Added to Watch List");
       } else {
-        const response = axios.delete(
+        const response = await axios.delete(
           `https://metflix-backend.onrender.com/api/v1/movie/watchlater/${params.id}`,
           {
             headers: {
@@ -98,9 +137,9 @@ const MovieDetails = () => {
             },
           }
         );
+        setIsWatchLater(!isWatchLater);
         toast.success("Removed from Watch List");
       }
-      setWatchLater(!watchLater);
     } catch (err) {
       console.log(err);
     }
@@ -227,7 +266,7 @@ const MovieDetails = () => {
               <Grid item xs={12} sm={6}>
                 <ButtonGroup size="small" variant="outlined">
                   <Button onClick={addToFavourite}>
-                    {favorite ? (
+                    {isFavorite ? (
                       <p className="flex items-center gap-2">
                         UnFavourite
                         <AiFillHeart size={18} />
@@ -240,7 +279,7 @@ const MovieDetails = () => {
                     )}
                   </Button>
                   <Button onClick={addToWatchLater}>
-                    {watchLater ? (
+                    {isWatchLater ? (
                       <p className="flex items-center gap-2">
                         Watchlist
                         <AiFillMinusCircle size={18} />

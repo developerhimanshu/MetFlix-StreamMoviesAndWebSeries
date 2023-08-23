@@ -37,7 +37,9 @@ function App() {
               <Route path="/movie/:id" element={<MovieDetails />} />
               <Route path="/movies" element={<Movies />} />
               <Route path="/favourites" element={<Favourites />} />
+              <Route path="/favourites/movie/:id" element={<MovieDetails />} />
               <Route path="/watchlater" element={<WatchLater />} />
+              <Route path="/watchlater/movie/:id" element={<MovieDetails />} />
             </Routes>
           </div>
         </div>
