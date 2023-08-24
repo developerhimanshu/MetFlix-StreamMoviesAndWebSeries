@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FaHeart, FaList } from "react-icons/fa";
 const ProfileScreen = () => {
   const { user, logout } = useAuth();
+  console.log(user);
   const btnClass =
     "px-3 bg-red-600 py-2 text-[20px] rounded-xl w-[150px] text-center flex flex-col items-center justify-center active:bg-red-700";
   return (
@@ -14,7 +15,7 @@ const ProfileScreen = () => {
           <img src="/images/users/1.png" alt="" />
           <div className="proflieScreen_details">
             <p className="text-2xl h-[60px] font-semibold bg-gray-500 flex items-center justify-center">
-              Welcome, {user.user.name}
+              Welcome, {user?.name}
             </p>
             <div className="profileScreenPlans">
               <h3>Plans</h3>

@@ -15,7 +15,6 @@ import WatchLater from "./pages/WatchLater";
 
 function App() {
   const { user } = useAuth();
-  console.log(user);
   const renderRoutes = () => {
     if (!user) {
       return (

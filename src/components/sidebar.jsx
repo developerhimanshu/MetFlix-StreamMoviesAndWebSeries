@@ -9,12 +9,7 @@ const categories = [
   { label: "Top Rated", value: "top_rated" },
   { label: "Upcoming", value: "upcoming" },
 ];
-const demoCategories = [
-  { label: "Comedy", value: "comedy" },
-  { label: "Action", value: "action" },
-  { label: "Horror", value: "horror" },
-  { label: "Animation", value: "animation" },
-];
+
 // const demoCategories = ["Comedy", "Acton", "Horror", "Animation"];
 const Sidebar = () => {
   const { genreOrCategoryName } = useSelector(
@@ -26,13 +21,17 @@ const Sidebar = () => {
   console.log(data);
   if (isLoading) {
     return (
-      <Box display="flex" justifyContent="center">
+      <Box
+        display="flex"
+        justifyContent="center "
+        className="h-screen items-center bg-black"
+      >
         <CircularProgress size="4rem" />
       </Box>
     );
   }
   return (
-    <div className="text-white  sticky left-0 top-0  bg-black p-3  min-w-[150px] w-[180px] h-screen flex flex-col  border-r border-[#2a2a2a] overflow-y-scroll overflow-x-hidden">
+    <div className="text-white  sticky left-0 top-0  bg-black p-3  min-w-[180px] w-[180px] h-screen flex flex-col  border-r border-[#2a2a2a] overflow-y-scroll overflow-x-hidden">
       <Link to="/">
         <img
           className=""

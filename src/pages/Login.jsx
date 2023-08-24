@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-// import { useHistory } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import { Link } from "react-router-dom";
 import { Navi } from "../components/NavbarLandingPage";
@@ -25,9 +24,7 @@ const Login = () => {
       );
       // console.log("response:", response.data);
       const token = response.data.token;
-      const headers = {
-        Authorization: "Bearer " + token,
-      };
+      localStorage.setItem("userData", JSON.stringify(response.data.user));
       localStorage.setItem("token", token);
       login(response.data);
     } catch (err) {
