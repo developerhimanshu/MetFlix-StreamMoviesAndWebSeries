@@ -15,7 +15,7 @@ const ProfileScreen = () => {
           <img src="/images/users/1.png" alt="" />
           <div className="proflieScreen_details">
             <p className="text-2xl h-[60px] font-semibold bg-gray-500 flex items-center justify-center">
-              Welcome, {user?.name}
+              Welcome, {user.user?.name ? user.user.name : user.name}
             </p>
             <div className="profileScreenPlans">
               <h3>Plans</h3>
