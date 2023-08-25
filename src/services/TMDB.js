@@ -38,6 +38,9 @@ export const tmdbApi = () => {
         query: ({ movie_id, list }) =>
           `/movie/${movie_id}/${list}?api_key=${apikey}`,
       }),
+      getVideos: builder.query({
+        query: ({ movie_id }) => `/movie/${movie_id}/videos?api_key=${apikey}`,
+      }),
     }),
   });
 };
@@ -46,4 +49,5 @@ export const {
   useGetMoviesQuery,
   useGetGenresQuery,
   useGetRecommendationQuery,
+  useGetVideosQuery,
 } = tmdbApi();

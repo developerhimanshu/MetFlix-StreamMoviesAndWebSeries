@@ -23,7 +23,7 @@ import {
   Modal,
 } from "@mui/material";
 import { selectGenreOrCategory } from "../features/currentGenreOrCategory";
-import { useGetRecommendationQuery } from "../services/TMDB";
+import { useGetRecommendationQuery, useGetVideosQuery } from "../services/TMDB";
 
 const MovieDetails = () => {
   const params = useParams();
@@ -44,6 +44,19 @@ const MovieDetails = () => {
       list: "/recommendations",
       movie_id: params.id,
     });
+
+  const { data: videos, isFetching: isGettingVideos } = useGetVideosQuery({
+    movie_id: params.id,
+  });
+  console.log(videos);
+  const getTrailer = () => {
+    const trailer = videos?.results?.find(
+      (video) => video.name === "Official Trailer"
+    );
+    return trailer?.key || "";
+  };
+
+  console.log(getTrailer());
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get(
@@ -181,7 +194,7 @@ const MovieDetails = () => {
   }, [params.id]);
   const img = movie ? movie.poster_path : null;
   //backgroundImage: `url(https://image.tmdb.org/t/p/original${img})`
-  return loading || isRecommendationsFetching ? (
+  return loading || isRecommendationsFetching || isGettingVideos ? (
     <Box
       display="flex"
       justifyContent="center"
@@ -271,9 +284,6 @@ const MovieDetails = () => {
                   >
                     IMDB
                   </Button>
-                  <Button onClick={() => {}} href="#">
-                    Trailer
-                  </Button>
                 </ButtonGroup>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -310,6 +320,21 @@ const MovieDetails = () => {
           </Grid>
         </div>
       </div>
+      <div className="mt-[1rem] lg:mt-[3rem] width-screen flex  flex-col items-center">
+        <p className="text-5xl text-white">Trailer</p>
+        <div className="mt-[1rem]">
+          {videos?.results?.length > 0 && (
+            <iframe
+              src={`https://www.youtube.com/embed/${getTrailer()}`}
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              className="w-[90vw] h-[50vh] lg:w-[70vw] lg:h-[80vh]"
+            ></iframe>
+          )}
+        </div>
+      </div>
       <Box marginTop="5rem" width="100%">
         <Typography variant="h3" gutterBottom align="center" color="white ">
           You might also like
@@ -320,19 +345,7 @@ const MovieDetails = () => {
           <Box>Sorry nothing was found.</Box>
         )}
       </Box>
-      <p>Trailer</p>
-      <div>
-        {movie?.videos?.results?.length > 0 && (
-          <iframe
-            autoPlay
-            className=""
-            frameBorder="0"
-            title="trailer"
-            src={`https://www.youtube.com/{movie?.vidoes?.results[0].key}`}
-            allow="autoplay"
-          />
-        )}
-      </div>
+
       <ToastContainer position="top-center" autoClose={500} />
     </div>
   );
