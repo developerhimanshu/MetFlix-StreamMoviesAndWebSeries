@@ -10,7 +10,7 @@ import {
   AiFillMinusCircle,
 } from "react-icons/ai";
 import "react-toastify/dist/ReactToastify.css";
-
+import MovieList from "../components/MovieList";
 import { API_KEY } from "../Request";
 import {
   Box,
@@ -20,8 +20,10 @@ import {
   Button,
   Rating,
   Typography,
+  Modal,
 } from "@mui/material";
 import { selectGenreOrCategory } from "../features/currentGenreOrCategory";
+import { useGetRecommendationQuery } from "../services/TMDB";
 
 const MovieDetails = () => {
   const params = useParams();
@@ -29,6 +31,7 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [open, setOpen] = useState(false);
   const [isWatchLater, setIsWatchLater] = useState(false);
   const navigate = useNavigate();
   let genreBtns = "";
@@ -36,6 +39,11 @@ const MovieDetails = () => {
 
   const [favMovieData, setFavMovieData] = useState(null);
   const [watchMovieData, setWatchMovieData] = useState(null);
+  const { data: recommendations, isFetching: isRecommendationsFetching } =
+    useGetRecommendationQuery({
+      list: "/recommendations",
+      movie_id: params.id,
+    });
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get(
@@ -149,7 +157,7 @@ const MovieDetails = () => {
     genreBtns = movie.genres?.map((genre) => {
       return (
         <button
-          className="text-white"
+          className="text-white hover:text-gray-300"
           onClick={() => {
             dispatch(selectGenreOrCategory(genre.id));
             navigate("/");
@@ -173,13 +181,17 @@ const MovieDetails = () => {
   }, [params.id]);
   const img = movie ? movie.poster_path : null;
   //backgroundImage: `url(https://image.tmdb.org/t/p/original${img})`
-  return loading ? (
-    <Box display="flex" justifyContent="center">
+  return loading || isRecommendationsFetching ? (
+    <Box
+      display="flex"
+      justifyContent="center"
+      className="h-full items-center bg-gray-700"
+    >
       <CircularProgress size="8rem" />
     </Box>
   ) : (
-    <div className="movie w-full bg-gray-700">
-      <div className="flex w-[100%] pt-10  text-white justify-around gap-4">
+    <div className="movie w-full bg-gray-700 py-4">
+      <div className="flex lg:flex-row flex-col items-center lg:items-start w-[100%] pt-10  text-white justify-around gap-4">
         <img
           src={`https://image.tmdb.org/t/p/original${img}`}
           className="w-[250px] h-[400px] rounded-xl"
@@ -202,7 +214,7 @@ const MovieDetails = () => {
                   : ""}
               </Typography>
             </Grid>
-            <div className="flex justify-between w-[70%]">
+            <div className="flex justify-between w-[70%] gap-3">
               {!loading && genreBtns}
             </div>
           </div>
@@ -223,6 +235,7 @@ const MovieDetails = () => {
                         component={Link}
                         to={`/actors/${character.id}
                     `}
+                        onClick={() => navigate(`/actors/${character.id}`)}
                         style={{ textDecoration: "none" }}
                       >
                         <img
@@ -241,7 +254,7 @@ const MovieDetails = () => {
                 .slice(0, 6)}
           </Grid>
           <Grid item container style={{ marginTop: "2rem" }}>
-            <div className="flex gap-[3rem]">
+            <div className="flex flex-col items-center lg:items-start lg:flex-row lg:gap-[3rem] gap-[1rem]">
               <Grid item xs={12} sm={6}>
                 <ButtonGroup size="small" variant="outlined">
                   <Button
@@ -296,6 +309,29 @@ const MovieDetails = () => {
             </div>
           </Grid>
         </div>
+      </div>
+      <Box marginTop="5rem" width="100%">
+        <Typography variant="h3" gutterBottom align="center" color="white ">
+          You might also like
+        </Typography>
+        {recommendations ? (
+          <MovieList movies={recommendations} bg="gray-700" />
+        ) : (
+          <Box>Sorry nothing was found.</Box>
+        )}
+      </Box>
+      <p>Trailer</p>
+      <div>
+        {movie?.videos?.results?.length > 0 && (
+          <iframe
+            autoPlay
+            className=""
+            frameBorder="0"
+            title="trailer"
+            src={`https://www.youtube.com/{movie?.vidoes?.results[0].key}`}
+            allow="autoplay"
+          />
+        )}
       </div>
       <ToastContainer position="top-center" autoClose={500} />
     </div>

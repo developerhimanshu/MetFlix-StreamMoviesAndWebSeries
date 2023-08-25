@@ -46,7 +46,7 @@ const Movies = () => {
 
   return (
     <div>
-      <MovieList movies={data} />
+      <MovieList movies={data} bg="black" />
     </div>
   );
 };

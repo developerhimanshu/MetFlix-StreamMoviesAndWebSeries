@@ -34,8 +34,16 @@ export const tmdbApi = () => {
           return `/movie/popular?page=${page}&api_key=${apikey}`;
         },
       }),
+      getRecommendation: builder.query({
+        query: ({ movie_id, list }) =>
+          `/movie/${movie_id}/${list}?api_key=${apikey}`,
+      }),
     }),
   });
 };
 
-export const { useGetMoviesQuery, useGetGenresQuery } = tmdbApi(); // Export the useGetMoviesQuery hook
+export const {
+  useGetMoviesQuery,
+  useGetGenresQuery,
+  useGetRecommendationQuery,
+} = tmdbApi();
