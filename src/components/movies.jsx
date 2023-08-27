@@ -20,7 +20,7 @@ const Movies = () => {
   }, [genreOrCategoryName]);
 
   const pageDown = (event) => {
-    if (page == 0) {
+    if (page == 1) {
       event.target.disabled = true;
     } else {
       setPage(page - 1);
