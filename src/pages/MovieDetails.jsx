@@ -47,7 +47,6 @@ const MovieDetails = () => {
   const { data: videos, isFetching: isGettingVideos } = useGetVideosQuery({
     movie_id: params.id,
   });
-  console.log(videos);
   const getTrailer = () => {
     const trailer = videos?.results?.find(
       (video) => video.name === "Official Trailer"
@@ -55,7 +54,6 @@ const MovieDetails = () => {
     return trailer?.key || "";
   };
 
-  console.log(getTrailer());
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get(
@@ -185,7 +183,6 @@ const MovieDetails = () => {
       const { data } = await axios.get(
         `https://api.themoviedb.org/3/movie/${params.id}?append_to_response=videos&append_to_response=credits&api_key=${API_KEY}&language=en-US`
       );
-      console.log("curr", data);
       setMovie(data);
       setLoading(false);
     };

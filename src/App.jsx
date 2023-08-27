@@ -12,7 +12,7 @@ import Sidebar from "./components/sidebar";
 import Nav from "./components/Nav";
 import Favourites from "./pages/Favourites";
 import WatchLater from "./pages/WatchLater";
-import Actors from "./pages/Actors";
+import ActorPage from "./pages/ActorPage";
 
 function App() {
   const { user } = useAuth();
@@ -38,7 +38,7 @@ function App() {
               <Route path="/movies" element={<Movies />} />
               <Route path="/favourites" element={<Favourites />} />
               <Route path="/watchlater" element={<WatchLater />} />
-              <Route path="/actors/:id" element={<Actors />} />
+              <Route path="/actors/:id" element={<ActorPage />} />
             </Routes>
           </div>
         </div>

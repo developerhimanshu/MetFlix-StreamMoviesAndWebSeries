@@ -13,7 +13,7 @@ import {
   Box,
 } from "@mui/material";
 import OtherMovies from "../components/OtherMovies";
-const Actors = () => {
+const ActorPage = () => {
   const { id } = useParams();
   const { data, isFetching } = useGetActorDetailsQuery({ actor_id: id });
   const img = data ? data.profile_path : null;
@@ -76,4 +76,4 @@ const Actors = () => {
   );
 };
 
-export default Actors;
+export default ActorPage;
