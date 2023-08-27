@@ -13,7 +13,7 @@ const ProfileScreen = () => {
         <h1>Edit Profile</h1>
         <div className="profileScreen_info flex flex-col lg:flex lg:flex-row lg:items-center">
           <img src="/images/users/1.png" alt="" />
-          <div className="proflieScreen_details">
+          <div className="proflieScreen_details text-center">
             <p className="text-2xl h-[60px] font-semibold bg-gray-500 flex items-center justify-center">
               Welcome, {user.user?.name ? user.user.name : user.name}
             </p>

@@ -7,12 +7,13 @@ const MovieList = ({ movies, bg }) => {
     <div
       className={`min-h-screen flex flex-wrap sm:justify-between overflow-auto justify-center bg-${bg} text-white/80`}
     >
-      {movies.results.map((movie, i) => (
+      {movies.results.slice(0, 18).map((movie, i) => (
         <Link
           to={`/movie/${movie.id}`}
           className="items-center font-bold sm:flex sm:flex-col hover:cursor-pointer"
+          key={i}
         >
-          <Movie movie={movie} i={i} key={i} />
+          <Movie movie={movie} i={i} />
         </Link>
       ))}
     </div>

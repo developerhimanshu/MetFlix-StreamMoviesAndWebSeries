@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { API_KEY } from "../Request";
 import Movie from "../components/Movie";
+import { Link } from "react-router-dom";
 
 const WatchLater = () => {
   const [movieData, setMovieData] = useState(null);
@@ -51,7 +52,12 @@ const WatchLater = () => {
       {newMovieArr.length == 0 ? innerHtml : ""}
       <div className="min-h-screen flex flex-wrap sm:justify-between overflow-auto justify-center bg-black text-white/80">
         {newMovieArr.map((movie, i) => (
-          <Movie movie={movie} i={i} key={i} />
+          <Link
+            to={`/movie/${movie.id}`}
+            className="items-center font-bold sm:flex sm:flex-col hover:cursor-pointer"
+          >
+            <Movie movie={movie} i={i} key={i} />
+          </Link>
         ))}
       </div>
     </div>

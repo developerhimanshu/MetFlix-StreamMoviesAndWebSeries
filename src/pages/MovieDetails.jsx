@@ -31,7 +31,6 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isFavorite, setIsFavorite] = useState(false);
-  const [open, setOpen] = useState(false);
   const [isWatchLater, setIsWatchLater] = useState(false);
   const navigate = useNavigate();
   let genreBtns = "";
@@ -329,7 +328,7 @@ const MovieDetails = () => {
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
+              allowFullScreen
               className="w-[90vw] h-[50vh] lg:w-[70vw] lg:h-[80vh]"
             ></iframe>
           )}
